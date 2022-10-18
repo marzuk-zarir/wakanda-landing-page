@@ -1,0 +1,29 @@
+#social-proof {
+    .wrapper {
+        display: flex;
+        justify-content: space-between;
+        padding: 4rem 0;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    #social-proof {
+        .wrapper {
+            flex-wrap: wrap;
+            row-gap: 2rem;
+            column-gap: 2rem;
+            justify-content: center;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    #social-proof {
+        .wrapper {
+            flex-direction: column;
+            align-items: center;
+            row-gap: 2rem;
+            padding: 2.5rem 0;
+        }
+    }
+}

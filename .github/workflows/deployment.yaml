@@ -1,0 +1,28 @@
+name: Deploy Website
+
+on: [push]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        name: Deploying to surge
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v1
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v1
+              with:
+                  node-version: 16
+
+            - name: Install Dependencies
+              run: npm install -g surge yarn
+              run: yarn
+
+            - name: Build the Project
+              run: yarn build && yarn export
+
+            - name: Deploy to surge.sh
+              run: cd out
+              run: echo ${{ secrets.SURGE_DOMAIN }} >> CNAME
+              run: surge . --token ${{ secrets.SURGE_TOKEN }}
