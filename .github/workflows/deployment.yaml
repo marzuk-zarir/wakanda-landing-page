@@ -21,8 +21,5 @@ jobs:
             - name: Build the Project
               run: yarn build && yarn export
 
-            - name: Setup Domain
-              run: cd out && echo ${{ secrets.SURGE_DOMAIN }} >> CNAME
-
             - name: Deploy to surge.sh
-              run: surge . --token ${{ secrets.SURGE_TOKEN }}
+              run: surge ./out ${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
